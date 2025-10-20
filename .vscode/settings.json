@@ -1,0 +1,6 @@
+{
+	"biome.enabled": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"local-history.path": "/Users/llmaboi/code/.history"
+}

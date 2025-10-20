@@ -1,2 +1,32 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import { getHello } from '$lib/remotes/hello.remote';
+</script>
+
+<article class="mx-auto flex w-1/2 flex-col gap-4">
+	<h1>Effect Remote Form Example</h1>
+	<p>
+		This example demonstrates how to use Effect Remote Forms in a SvelteKit application. Fill out
+		the form below and submit it to see the result.
+	</p>
+
+	<h1 class="text-3xl font-bold underline">Hello Effect Remote Form</h1>
+
+	<form {...getHello}>
+		<label>
+			Name:
+			<input
+				class="form-input"
+				{...getHello.fields.name.as('text')}
+				placeholder="Enter your name"
+			/>
+
+			{#each getHello.fields.name.issues() as issue}
+				<p class="text-red-600">{issue.message}</p>
+			{/each}
+		</label>
+
+		<button class="rounded-xl bg-green-600 p-4 text-amber-200" type="submit">Send</button>
+	</form>
+
+	<pre>{getHello.result}</pre>
+</article>
