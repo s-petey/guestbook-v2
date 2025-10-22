@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { helloCommand, resetHellosCommand } from '$lib/remotes/hello.remote';
+	import { helloCommand, resetPeople } from '$lib/remotes/hello.remote';
+	import type { Person } from '$lib/schemas/Person';
 
 	let disableMultiple = $state(false);
 
-	let response: string[] = $state([]);
+	let response: readonly Person[] = $state([]);
 
 	let ctr = 0;
 </script>
@@ -35,12 +36,12 @@
 
 			<button
 				onclick={async () => {
-					await resetHellosCommand();
+					await resetPeople();
 					response = [];
 				}}
 				class="rounded bg-purple-500 px-3 py-1 text-sm text-white hover:bg-purple-600"
 			>
-				Reset Hellos
+				Reset people
 			</button>
 
 			<pre>Items pending: {helloCommand.pending}</pre>
@@ -48,8 +49,8 @@
 		<section>
 			Items added:
 			<ul class="list-inside list-disc">
-				{#each response as item (item)}
-					<li>{item}</li>
+				{#each response as item (item.id)}
+					<li>{item.name}</li>
 				{/each}
 			</ul>
 		</section>

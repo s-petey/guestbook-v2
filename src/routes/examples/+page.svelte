@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { helloQuery } from '$lib/remotes/hello.remote';
+	import { queryPeople } from '$lib/remotes/hello.remote';
 
-	const query = helloQuery();
+	const query = queryPeople();
 </script>
 
 <div class="card rounded-lg bg-white p-6 shadow-lg">
@@ -28,7 +28,14 @@
 		</div>
 	{:else if query.current}
 		<div class="space-y-2">
-			<h3 class="font-medium text-gray-700">({query.current}):</h3>
+			<h3 class="text-lg font-semibold text-gray-800">People:</h3>
+			<ul class="list-inside list-disc">
+				{#each query.current as person (person.id)}
+					<li class="font-medium text-gray-700">
+						{person.name}
+					</li>
+				{/each}
+			</ul>
 		</div>
 	{/if}
 </div>

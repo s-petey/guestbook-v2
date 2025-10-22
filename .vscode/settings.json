@@ -2,5 +2,5 @@
 	"biome.enabled": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
-	"local-history.path": "/Users/llmaboi/code/.history"
+	"local-history.path": "/home/spete_dev/development/.history"
 }
